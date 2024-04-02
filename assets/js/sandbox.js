@@ -4,12 +4,13 @@ console.log(today)
 var yearVal = today.format('YYYY')
 var monthVal = today.format('MM')
 var dayVal = today.format('DD')
+var countryVal = "US"
 
 
 
 var paramsForHoliday = new URLSearchParams({
     api_key: "4657a48c034a4f669efcb46c03aa821f",
-    country: "US",
+    country: countryVal,
     year: yearVal,
     month: monthVal,
     day: dayVal
