@@ -43,6 +43,7 @@ function getUserInput(event) {
     //     .then(renderHolidays)
     return dateObj;
 }
+// function to call when form is submitted
 function renderNewHolidays(event) {
     const dateObj = getUserInput(event)
     getHolidays(dateObj)
@@ -55,7 +56,7 @@ function renderHolidays(holidays) {
 function getTodaysHolidays() {
     return fetch(`${urlForHoliday}?${paramsForHoliday}`)
         .then(response => response.json())
-        .then(response => response.forEach(holiday => $('#holidays').append(`<div class="holiday">${holiday.name}</div>`)))
+        .then(renderHolidays)
         .catch(err => console.error(err));
 }
 $(document).ready(function () {
@@ -67,6 +68,7 @@ $(document).ready(function () {
 });
 
 $('form').on('submit', renderNewHolidays)
+
 $('#holidays').on('click', '.holiday', function (event) {
     console.log('Clicked on ' + this.innerHTML)
     getWikiArticalArray(this.innerHTML, countryVal)
