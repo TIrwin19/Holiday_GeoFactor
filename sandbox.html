@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <link rel="stylesheet" href="sandbox.css">
 </head>
+
 <body>
-        <form action="">
-            
-            <input  type="date" id="date" >
-            <input type="text" id="name" placeholder="insert name">
-
-        </body>form>
-
-    <script src="assets/js/sandbox.js"></script>
+    <div>
+        <h1>Holidays Today</h1>
+        <div id="holidays">None</div>
+    </div>
+    <form>
+        <input type="date" id="date">
+        <input type="text" id="name" placeholder="insert name">
+        <button> Submit</button>
+    </form>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+<script>dayjs.extend(window.dayjs_plugin_utc)</script>
+<script src="assets/js/sandbox.js"></script>
+</body>
+
 </html>
