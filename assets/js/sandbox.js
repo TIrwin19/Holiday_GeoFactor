@@ -1,5 +1,7 @@
 // const options = { method: 'GET' };
 
+
+
 fetch('https://holidays.abstractapi.com/v1/?api_key=4657a48c034a4f669efcb46c03aa821f&country=US&year=2024&month=04&day=04')
     .then(response => response.json())
     .then(response => console.log(response))
