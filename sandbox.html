@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-    <link rel="stylesheet" href="sandbox.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link rel="stylesheet" href="sandbox.css"> -->
 </head>
 
 <body>
@@ -14,11 +15,32 @@
         <h1>Holidays Today</h1>
         <div id="holidays"></div>
     </div>
-    <form>
+    <form id="input">
         <input type="date" id="date">
         <input type="text" id="name" placeholder="insert name">
         <button> Submit</button>
     </form>
+
+    <button class="btn" onclick="my_modal_1.showModal()">open modal</button>
+    <dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg">Hello!</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="modal-action">
+        <form method="dialog">
+            <h1 id = "modal-title">Your Chisen Holiday</h1>
+            <p id = "modal-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus libero rerum repellat deserunt, molestiae vero dolor adipisci, laudantium, placeat fugit minus culpa hic magni sed id velit molestias. Perspiciatis, rerum!
+            Odit cum vero debitis et accusantium nostrum quo, dicta vitae porro, minima esse repellendus ex est amet soluta nisi ab quae facere ipsum corrupti eius sequi. Nemo molestias magnam eligendi!
+            Eveniet dolore, deleniti distinctio laboriosam molestias soluta omnis eligendi, sequi delectus unde beatae, praesentium in! Veritatis, hic cumque. Adipisci similique inventore itaque a sed voluptate totam, sequi vel quaerat pariatur.
+            Error illo molestias deserunt dolor, natus ea quis et esse, aut distinctio provident pariatur autem harum magni. Hic fugit earum dolorum! Quibusdam perferendis quaerat fugit nemo, provident sunt aperiam totam.
+            Quod doloremque earum voluptates repellendus iste et corporis? Quidem neque doloribus ab fuga dignissimos non quos ex deleniti, beatae, laborum commodi adipisci deserunt reprehenderit quisquam aperiam illo tenetur officia? Sunt.
+            Eos possimus sapiente nesciunt itaque autem sint? Quas quod ab autem totam vero tenetur possimus.
+            </p>
+            <button class="btn">Close</button>
+        </form>
+        </div>
+    </div>
+    </dialog>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

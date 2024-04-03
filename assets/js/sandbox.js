@@ -45,6 +45,7 @@ function getUserInput(event) {
 }
 // function to call when form is submitted
 function renderNewHolidays(event) {
+    event.preventDefault()
     const dateObj = getUserInput(event)
     getHolidays(dateObj)
         .then(renderHolidays)
@@ -61,19 +62,16 @@ function getTodaysHolidays() {
 }
 $(document).ready(function () {
     getTodaysHolidays()
-    // fetch(`${urlForHoliday}?${paramsForHoliday}`)
-    //     .then(response => response.json())
-    //     .then(response => response.forEach(holiday => $('#holidays').append(`<div class="holiday">${holiday.name}</div>`)))
-    //     .catch(err => console.error(err));
 });
 
-$('form').on('submit', renderNewHolidays)
+$('#input').on('submit', renderNewHolidays)
 
 $('#holidays').on('click', '.holiday', function (event) {
-    console.log('Clicked on ' + this.innerHTML)
+    document.getElementById('my_modal_1').showModal()
+    $('#modal-title').text(this.innerHTML)
     getWikiArticalArray(this.innerHTML, countryVal)
         .then(getWikiExerpt)
-        .then(exerpt => console.log(exerpt))
+        .then(exerpt => $('#modal-content').text(exerpt))
     // .then(openModalWithExerpt)
 })
 
