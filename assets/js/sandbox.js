@@ -44,15 +44,14 @@ function getUserInput(event) {
     return dateObj;
 }
 // function to call when form is submitted
-function renderNewHolidays(event) {
+async function renderNewHolidays(event) {
     event.preventDefault()
     const dateObj = getUserInput(event)
-    getHolidays(dateObj)
-  .then(renderHolidays)
+    const holidayList = await getHolidays(dateObj)
+    renderHolidays(holidayList, dateObj)
 }
-function renderHolidays(holidays) {
-    console.log(holidays)
-    holidays.forEach(holiday => $('#holidays').append(`<div class="holiday">${holiday.name}</div>`))
+function renderHolidays(holidays, date) {
+    holidays.forEach(holiday => $('#holidays').append(`<div class="holiday" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</div>`))
 }
 
 function getTodaysHolidays() {
@@ -67,29 +66,31 @@ $(document).ready(function () {
 
 $('#input').on('submit', renderNewHolidays)
 
-$('#holidays').on('click', '.holiday', function (event) {
+$('#holidays').on('click', '.holiday', async function (event) {
     document.getElementById('my_modal_1').showModal()
     $('#modal-title').text(this.innerHTML)
-    getWikiArticalArray(this.innerHTML, countryVal)
-        .then(getWikiExerpt)
-        .then(exerpt => $('#modal-content').text(exerpt))
+    const title = await getWikiArticalArray(this.innerHTML, this.dataset['date'])
+    getWikiExerpt(title)
+        .then(res => {
+            $('#modal-content').text(res.exerpt)
+            $('#modal-link').attr('href', res.url)
+        })
     // .then(openModalWithExerpt)
 })
 
 // Takes holiday - Returns title of first relevan wikipedia article
-function getWikiArticalArray(holiday, country) {
+function getWikiArticalArray(holiday, date) {
     const url = "https://en.wikipedia.org/w/api.php";
     const params = new URLSearchParams({
         action: "query",
         list: "search",
-        srsearch: holiday + ' ' + country,
+        srsearch: holiday,
         format: "json",
         origin: "*"
     });
-    return pageId = fetch(`${url}?${params}`)
+    return fetch(`${url}?${params}`)
         .then(response => response.json())
-        .then(function(data){console.log(data) 
-            return data})
+        // .then(response => console.log(response))
         .then(response => response.query.search[0].title)
         .catch(err => console.error(err));
 }
@@ -97,6 +98,8 @@ function getWikiArticalArray(holiday, country) {
 
 function getWikiExerpt(title) {
     const url = "https://en.wikipedia.org/w/api.php";
+    underscoreTitle = title.replace(' ', '_')
+    wikiUrl = "https://en.wikipedia.org/wiki/" + underscoreTitle
     var params2 = new URLSearchParams({
         action: "query",
         format: "json",
@@ -110,8 +113,7 @@ function getWikiExerpt(title) {
     });
     console.log(`${params2}`)
     return fetch(`${url}?${params2}`)
-        .then(response => response.json()).then(function(data){console.log(data) 
-            return data})
-        .then(response => response.query.pages[0].extract)
+        .then(response => response.json())
+        .then(response => { return {exerpt: response.query.pages[0].extract, url: wikiUrl} })
         .catch(err => console.error(err));
 }
