@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&display=swap');
+
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* font-size: ; */
+    font-family: 'inter', sans-serif;
+    
 }
 
 html,body{
     height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 body{
@@ -18,3 +24,21 @@ main{
     flex: 1;
 }
 
+
+
+/* Style for the overlay */
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the modal */
+.modal {
+    max-height: 80vh; /* Maximum height for the modal */
+    overflow-y: auto; /* Enable scrolling */
+}
+
+.hero-image{
+    background-image: url('/assets/images/world.jpg');
+    background-position: center;
+    background-size: cover;
+}

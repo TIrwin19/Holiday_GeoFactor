@@ -1,67 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="emerald">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"> -->
-    
+
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
-        <title>Holiday Geo-Factor | Results</title>
+    <title>Holiday Geo-Factor | Results</title>
 </head>
 
 <body>
-    <header class="p-2">
-        <h1>Holiday Geo-Factor</h1>
-        <label class="cursor-pointer grid place-items-center">
-            <input type="checkbox" value="synthwave" class="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"/>
-            <svg class="col-start-1 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
-            <svg class="col-start-2 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          </label>
+    <header
+        class="py-1 px-4 bg-gradient-to-br from-neutral-900 to-neutral-500 flex flex-row justify-between items-center">
+        <h1 class="text-2xl text-teal-500 font-extrabold">Holiday Geo-Factor</h1>
+        <!-- <label class="cursor-pointer grid place-items-center">
+            <input type="checkbox" value="dark"
+                class="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2" />
+            <svg class="col-start-1 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg"
+                width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <path
+                    d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+            </svg>
+            <svg class="col-start-2 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg"
+                width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </label> -->
     </header>
 
-    <main>
-       
+    <main class="bg-zinc-100">
+        <div class="hero-image border-b-2 border-zinc-950">
+            <hero class="flex flex-col items-center px-5 py-10 h-90">
 
-        <h1 class="m-2">Results for (Country)</h1>
+                <div class="flex flex-col items-center ">
+                    <h2
+                        class="text-2xl uppercase text-center bg-slate-100 bg-opacity-85 mt-3 py-1 px-2 w-fit rounded-xl shadow-lg">
+                        What holidays do you celebrate?</h2>
+    
+                    <form id="holiday-form"
+                        class="flex flex-col bg-slate-100 p-2 border border-slate-300 bg-opacity-85 h-30 py-4 mt-6 mb-3 rounded-xl w-60 shadow-lg">
+                        <label for="input-date">Pick A Date</label>
+                        <input id="input-date" name="date" type="date" class="border border-slate-300">
+    
+                        <label for="input-country">Pick A Country</label>
+                        <input id="input-country" name="country" type="text" class="border border-slate-300">
+                        <button
+                            class="mt-3 border border-slate-300 rounded-full transition ease-in-out delay-0 bg-slate-400 bg-opacity-80 hover:-translate-y-0 hover:scale-105 hover:bg-sky-500 duration-300"
+                            id="submit-btn">Submit</button>
+                    </form>
+                </div>
+            </hero>
+    
+            <!-- <div class="hero min-h-screen"
+                style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
+                <div class="hero-overlay bg-opacity-60"></div>
+                <div class="hero-content text-center text-neutral-content">
+                    <div class="max-w-md">
+                        <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+                        <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
+                            exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <button class="btn btn-primary">Get Started</button>
+                    </div>
+                </div>
+            </div> -->
+    
+            <section class="flex flex-col items-center w-full">
+                <h3 class="mt- text-2xl bg-slate-100 bg-opacity-85 p-2 rounded-md">Results for (Country)</h3>
+                <hr class="h-1 w-72 bg-stone-700 mt-4 rounded-full">
+                <div class="flex justify-center flex-wrap mt-5">
+                    <p
+                        class="mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+                        Holiday 1</p>
+                    <p
+                        class="mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-600 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+                        Holiday 2</p>
+                    <p
+                        class="mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-600 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+                        Holiday 3</p>
+                    <p
+                        class="mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-600 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+                        Holiday 4</p>
+                    <p
+                        class="mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-600 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+                        Holiday 5</p>
+                    <p
+                        class="mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-600 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+                        Holiday 6</p>
+    
+                    <p
+                        class="mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-600 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+                        Holiday 7</p>
+                </div>
+            </section>
+        </div>
+        
+        
+        <div class="overflow-x-auto mt-5">
+            <table class="table">
+                <!-- head -->
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Country</th>
+                        <th>Holiday</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- row 1 -->
+                    <tr class="hover">
+                        <th>1</th>
+                        <td>Cy Ganderton</td>
+                        <td>Quality Control Specialist</td>
+                        <td>Blue</td>
+                        <td><button class="btn btn-outline btn-accent scale-75">Accent</button></td>
+                    </tr>
+                    <!-- row 2 -->
+                    <tr class="hover">
+                        <th>2</th>
+                        <td>Hart Hagerty</td>
+                        <td>Desktop Support Technician</td>
+                        <td>Purple</td>
+                        <td><button class="btn btn-outline btn-accent scale-75">Accent</button></td>
+                    </tr>
+                    <!-- row 3 -->
+                    <tr class="hover">
+                        <th>3</th>
+                        <td>Brice Swyre</td>
+                        <td>Tax Accountant</td>
+                        <td>Red</td>
+                        <td><button class="btn btn-outline btn-accent scale-75">Accent</button></td>
+                    </tr>
+                    <!-- row 4 -->
+                    <tr class="hover">
+                        <th>4</th>
+                        <td>Brice Swyre</td>
+                        <td>Tax Accountant</td>
+                        <td>Red</td>
+                        <td><button class="btn btn-outline btn-accent scale-75">Accent</button></td>                    </tr>
+                    <!-- row 5 -->
+                    <tr class="hover">
+                        <th>5</th>
+                        <td>Brice Swyre</td>
+                        <td>Tax Accountant</td>
+                        <td>Red</td>
+                        <td><button class="btn btn-outline btn-accent scale-75">Accent</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <button class="btn" onclick="my_modal_1.showModal()">open modal</button>
         <dialog id="my_modal_1" class="modal">
-        <div class="modal-box">
-            <h3 class="font-bold text-lg">Hello!</h3>
-            <p class="py-4">Press ESC key or click the button below to close</p>
-            <div class="modal-action">
-            <form method="dialog">
-                <H1>Your Chisen Holiday</H1>
-                <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus libero rerum repellat deserunt, molestiae vero dolor adipisci, laudantium, placeat fugit minus culpa hic magni sed id velit molestias. Perspiciatis, rerum!
-                Odit cum vero debitis et accusantium nostrum quo, dicta vitae porro, minima esse repellendus ex est amet soluta nisi ab quae facere ipsum corrupti eius sequi. Nemo molestias magnam eligendi!
-                Eveniet dolore, deleniti distinctio laboriosam molestias soluta omnis eligendi, sequi delectus unde beatae, praesentium in! Veritatis, hic cumque. Adipisci similique inventore itaque a sed voluptate totam, sequi vel quaerat pariatur.
-                Error illo molestias deserunt dolor, natus ea quis et esse, aut distinctio provident pariatur autem harum magni. Hic fugit earum dolorum! Quibusdam perferendis quaerat fugit nemo, provident sunt aperiam totam.
-                Quod doloremque earum voluptates repellendus iste et corporis? Quidem neque doloribus ab fuga dignissimos non quos ex deleniti, beatae, laborum commodi adipisci deserunt reprehenderit quisquam aperiam illo tenetur officia? Sunt.
-                Eos possimus sapiente nesciunt itaque autem sint? Quas quod ab autem totam vero tenetur possimus.
-                </P>
-                <button class="btn">Close</button>
-            </form>
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Hello!</h3>
+                <p class="py-4">Press ESC key or click the button below to close</p>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <H1>Your Chisen Holiday</H1>
+                        <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus libero rerum
+                            repellat
+                            deserunt, molestiae vero dolor adipisci, laudantium, placeat fugit minus culpa hic magni
+                            sed
+                            id velit molestias. Perspiciatis, rerum!
+                            Odit cum vero debitis et accusantium nostrum quo, dicta vitae porro, minima esse
+                            repellendus
+                            ex est amet soluta nisi ab quae facere ipsum corrupti eius sequi. Nemo molestias magnam
+                            eligendi!
+                            Eveniet dolore, deleniti distinctio laboriosam molestias soluta omnis eligendi, sequi
+                            delectus unde beatae, praesentium in! Veritatis, hic cumque. Adipisci similique
+                            inventore
+                            itaque a sed voluptate totam, sequi vel quaerat pariatur.
+                            Error illo molestias deserunt dolor, natus ea quis et esse, aut distinctio provident
+                            pariatur autem harum magni. Hic fugit earum dolorum! Quibusdam perferendis quaerat fugit
+                            nemo, provident sunt aperiam totam.
+                            Quod doloremque earum voluptates repellendus iste et corporis? Quidem neque doloribus ab
+                            fuga dignissimos non quos ex deleniti, beatae, laborum commodi adipisci deserunt
+                            reprehenderit quisquam aperiam illo tenetur officia? Sunt.
+                            Eos possimus sapiente nesciunt itaque autem sint? Quas quod ab autem totam vero tenetur
+                            possimus.
+                        </P>
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
             </div>
-        </div>
         </dialog>
-
-        <div>
-            <p class="m-2">Holiday 1</p>
-            <p class="m-2">Holiday 2</p>
-            <p class="m-2">Holiday 3</p>
-            <p class="m-2">Holiday 4</p>
-            <p class="m-2">Holiday 5</p>
-            <p class="m-2">Holiday 6</p>
-        </div>
-
-
 
     </main>
 
-    <footer>
+    <footer class="text-center  p-2 border-t border-slate-300">
         <a href="">Team Portfolio's</a>
         <p>&copy 2024</p>
     </footer>
