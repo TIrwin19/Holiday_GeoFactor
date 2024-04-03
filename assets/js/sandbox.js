@@ -22,7 +22,7 @@ function getHolidays(dateObj) {
     paramsForHoliday.set("day", `${dateObj.day}`);
     return fetch(`${urlForHoliday}?${paramsForHoliday}`)
         .then(response => response.json())
-        // .then(response => console.log(response))
+        //.then(response => console.log(response))
         .catch(err => console.error(err));
 
 }
@@ -48,9 +48,10 @@ function renderNewHolidays(event) {
     event.preventDefault()
     const dateObj = getUserInput(event)
     getHolidays(dateObj)
-        .then(renderHolidays)
+  .then(renderHolidays)
 }
 function renderHolidays(holidays) {
+    console.log(holidays)
     holidays.forEach(holiday => $('#holidays').append(`<div class="holiday">${holiday.name}</div>`))
 }
 
@@ -87,6 +88,8 @@ function getWikiArticalArray(holiday, country) {
     });
     return pageId = fetch(`${url}?${params}`)
         .then(response => response.json())
+        .then(function(data){console.log(data) 
+            return data})
         .then(response => response.query.search[0].title)
         .catch(err => console.error(err));
 }
@@ -100,14 +103,15 @@ function getWikiExerpt(title) {
         prop: "extracts",
         titles: title,
         formatversion: "2",
-        exsentences: "10",
+        exsentences: "3",
         exlimit: "1",
         explaintext: 1,
         origin: "*"
     });
     console.log(`${params2}`)
     return fetch(`${url}?${params2}`)
-        .then(response => response.json())
+        .then(response => response.json()).then(function(data){console.log(data) 
+            return data})
         .then(response => response.query.pages[0].extract)
         .catch(err => console.error(err));
 }
