@@ -7,12 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Holiday Geo-Factor | Results</title>
+    <title>Holiday Geo-Factor</title>
 </head>
 
 <body>
     <header class="py-2 px-4 bg-gradient-to-r from-indigo-950 to-indigo-500 flex flex-row justify-between items-center">
         <h1 class="text-2xl text-zinc-100 font-extrabold">Holiday Geo-Factor</h1>
+        <!-- Dark mode toggle for future use -->
         <!-- <label class="cursor-pointer grid place-items-center">
             <input type="checkbox" value="dark"
                 class="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2" />
@@ -32,21 +33,23 @@
     </header>
 
     <main class="bg-zinc-100">
-        <figure class="hero-image border-b-2 border-zinc-950">
-            <div class="flex flex-col items-center px-5 py-5">
 
+        <figure class="hero-image border-b-2 border-zinc-950">
+
+            <div class="flex flex-col items-center px-5 py-5">
+                <!-- Main landing title -->
                 <h2
                     class="text-2xl uppercase text-center bg-slate-100 bg-opacity-85 mt-3 py-1 px-2 w-fit rounded-xl shadow-lg">
                     What holidays do you celebrate?
                 </h2>
-
+                <!-- Form that takes date and country input -->
                 <form id="holiday-form"
                     class="flex flex-col bg-slate-100 p-2 border border-slate-300 bg-opacity-85 h-30 py-4 mt-6 mb-3 rounded-xl w-60 shadow-lg">
                     <label for="input-date">Pick A Date</label>
                     <input id="input-date" name="date" type="date" class="border border-slate-300">
 
                     <label for="input-country">Pick A Country</label>
-                    <!-- <input id="input-country" name="country" type="text" class="border border-slate-300"> -->
+                    <!-- Selectable drop down -->
                     <select id="input-country" name="country" class="form-control">
                         <option value="US">United States</option>
                         <option value="GB">United Kingdom</option>
@@ -63,19 +66,22 @@
                         id="submit-btn">Submit</button>
                 </form>
 
-                <h3 id="day-country" class="text-xl bg-slate-100 bg-opacity-85 p-2 rounded-md mt-3"></h3>
+                <h3 id="day-country" class="text-xl bg-slate-100 bg-opacity-85 p-2 rounded-md mt-3">
+                    <!-- Selected Holiday/Date -->
+                </h3>
+
                 <div id="holidays" class="flex justify-center flex-wrap mt-3">
-                    <!-- <p
-                            class=" holiday mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
-                            No Holidays Today</p> -->
+                    <!-- Holiday result buttons -->
                 </div>
+
             </div>
+            
         </figure>
 
         <div class="overflow-x-auto mt-5">
             <table class="table">
                 <caption class="text-xl">Favorite Holidays</caption>
-                <!-- head -->
+                <!-- Table head -->
                 <thead>
                     <tr>
                         <th></th>
@@ -85,19 +91,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- row 1 -->
+                    <!-- Table body from JS-->
                 </tbody>
             </table>
         </div>
 
         <!-- Add tailwind classes to style modal -->
-        <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
         <dialog id="my_modal_1" class="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div class="modal-box">
                 <p class="py-4">Press ESC</p>
                 <div class="modal-action">
                     <form method="dialog">
-                        <h1 id="modal-title" class="text-lg fomy-medium"></h1>
+                        <h1 id="modal-title" class="text-xl fomy-medium"></h1>
                         <hr class="h-0.5 w-auto bg-stone-700 mt-4 rounded-full">
                         <p id="modal-content" class="py-4"></p>
                         <div class="pt-4 flex justify-between">
@@ -121,11 +126,9 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
     <script>dayjs.extend(window.dayjs_plugin_utc)</script>
-
     <script src="/assets/js/script.js"></script>
     <script src="/assets/js/mockup.js"></script>
 
 </body>
-
 
 </html>
