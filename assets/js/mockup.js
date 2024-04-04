@@ -28,12 +28,16 @@ function renderHolidays(holidays, date, country) {
     $('#day-country').text(`${country} Holidays - ${date.month}/${date.day}/${date.year}`)
     $('#holidays').empty()
     if (holidays.length) {
-        holidays.forEach(holiday => $('#holidays').append(`<div class="mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300""><p
-    class="holiday" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>
-    <button class= "favorite">Add to Favorites</button></div>`))
+        holidays.forEach(holiday => $('#holidays').append(`
+        <div class="flex flex-col justify-center mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+            <p class="holiday text-center" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>
+            <button class= "favorite mt-1 btn btn-outline btn-info scale-75">Add to Favorites</button>
+        </div>`))
     } else {
-        $('#holidays').append(`<div class = "mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300"><p
-    class= "no-holiday"  data-date="${date.month}/${date.day}/${date.year}">No Holiday Today</p></div>`)
+        $('#holidays').append(`
+        <div class = "mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+            <p class= "no-holiday"  data-date="${date.month}/${date.day}/${date.year}">No Holiday Today</p>
+        </div>`)
     }
 }
 
