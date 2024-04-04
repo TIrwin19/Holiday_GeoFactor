@@ -42,3 +42,9 @@ main{
     background-position: center;
     background-size: cover;
 }
+
+.about-hero{
+    background-image: url('/assets/images/city.jpg');
+    background-position: center;
+    background-size: cover;
+}
