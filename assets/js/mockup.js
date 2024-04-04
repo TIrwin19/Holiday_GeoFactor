@@ -28,12 +28,12 @@ function renderHolidays(holidays, date, country) {
     $('#day-country').text(`${country} Holidays - ${date.month}/${date.day}/${date.year}`)
     $('#holidays').empty()
     if (holidays.length) {
-        holidays.forEach(holiday => $('#holidays').append(`<p
-    class="holiday mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>
-    <button class= "favorite">Add to Favorites</button>`))
+        holidays.forEach(holiday => $('#holidays').append(`<div class="mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300""><p
+    class="holiday  data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>
+    <button class= "favorite">Add to Favorites</button></div>`))
     } else {
-        $('#holidays').append(`<p
-    class= "no-holiday mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300" data-date="${date.month}/${date.day}/${date.year}">No Holiday Today</p>`)
+        $('#holidays').append(`<div><p
+    class= "no-holiday mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300" data-date="${date.month}/${date.day}/${date.year}">No Holiday Today</p></div>`)
     }
 }
 
@@ -107,6 +107,16 @@ $('#holiday-form').on('submit', renderNewHolidays)
 
 $('#holidays').on('click', '.holiday', async function (event) {
     document.getElementById('my_modal_1').showModal()
+    $('#modal-title').text(this.innerHTML)
+    const title = await getWikiArticalArray(this.innerHTML, this.dataset['date'])
+    getWikiExerpt(title)
+        .then(res => {
+            $('#modal-content').text(res.exerpt)
+            $('#modal-link').attr('href', res.url)
+        })
+})
+
+$('#holidays').on('click', '.favorite', async function (event) {
     $('#modal-title').text(this.innerHTML)
     const title = await getWikiArticalArray(this.innerHTML, this.dataset['date'])
     getWikiExerpt(title)
