@@ -75,7 +75,6 @@ $('#holidays').on('click', '.holiday', async function (event) {
             $('#modal-content').text(res.exerpt)
             $('#modal-link').attr('href', res.url)
         })
-    // .then(openModalWithExerpt)
 })
 
 // Takes holiday - Returns title of first relevan wikipedia article
