@@ -22,7 +22,7 @@ var paramsForHoliday = new URLSearchParams({
 });
 
 var urlForHoliday = "https://holidays.abstractapi.com/v1/"
-let favoriteList = JSON.parse(localStorage.getItem('Holiday')) || [];
+let favoriteList = JSON.parse(localStorage.getItem('Holiday')) || []
 
 console.log(favoriteList)
 
@@ -35,7 +35,7 @@ function renderHolidays(holidays, date, country) {
         holidays.forEach(holiday => $('#holidays').append(`
         <div class="flex flex-col justify-center mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
             <p class="holiday text-center" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>
-            <button class= "favorite mt-1 btn btn-outline btn-info scale-75">Add to Favorites</button>
+            <button class= "favorite mt-1 btn btn-outline btn-info scale-75" data-holiday="${holiday.name}" data-country="${country}" data-date="${date.month}/${date.day}/${date.year}">Add to Favorites</button>
         </div>`))
     } else {
         $('#holidays').append(`
@@ -44,9 +44,6 @@ function renderHolidays(holidays, date, country) {
         </div>`)
     }
 }
-
-{/* <p
-class=" holiday mx-3 my-5 text-white text-lg size-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p> */}
 
 function getTodaysHolidays() {
     return fetch(`${urlForHoliday}?${paramsForHoliday}`)
@@ -147,8 +144,8 @@ $('tbody').on('click', '.delete', function (event) {
     console.log(favoriteList[0].holiday)
     console.log(this.dataset.holiday)
    favoriteList = favoriteList.filter(holidayObj => holidayObj.holiday != this.dataset.holiday)
-
-    localStorage.setItem('Holiday',favoriteList)
+    console.log(favoriteList.length)
+    localStorage.setItem('Holiday',JSON.stringify(favoriteList))
    
 
 })
@@ -166,7 +163,6 @@ $('#holidays').on('click', '.favorite', function (event) {
     if(!check.length){
         favoriteList.push(OBJ)
         console.log(favoriteList)
-       
         localStorage.setItem('Holiday',JSON.stringify(favoriteList))
         renderFav(OBJ)
     }
@@ -205,7 +201,10 @@ function getWikiArticalArray(holiday, date) {
     });
     return fetch(`${url}?${params}`)
         .then(response => response.json())
-        // .then(response => console.log(response))
+        .then(response => {
+            console.log(response)
+            return response   
+        })
         .then(response => response.query.search[0].title)
         .catch(err => console.error(err));
 }
