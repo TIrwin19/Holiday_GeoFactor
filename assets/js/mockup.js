@@ -29,10 +29,11 @@ function renderHolidays(holidays, date, country) {
     $('#holidays').empty()
     if (holidays.length) {
         holidays.forEach(holiday => $('#holidays').append(`<p
-    class=" holiday mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>`))
+    class="holiday mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>
+    <button class= "favorite">Add to Favorites</button>`))
     } else {
         $('#holidays').append(`<p
-    class=" no-holiday mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300" data-date="${date.month}/${date.day}/${date.year}">No Holiday Today</p>`)
+    class= "no-holiday mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl flex justify-center items-center transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300" data-date="${date.month}/${date.day}/${date.year}">No Holiday Today</p>`)
     }
 }
 
