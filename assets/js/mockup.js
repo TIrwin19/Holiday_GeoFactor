@@ -22,6 +22,9 @@ var paramsForHoliday = new URLSearchParams({
 });
 
 var urlForHoliday = "https://holidays.abstractapi.com/v1/"
+let favoriteList = JSON.parse(localStorage.getItem('Holiday')) || [];
+
+console.log(favoriteList)
 
 function renderHolidays(holidays, date, country) {
     console.log(date)
@@ -78,9 +81,9 @@ function getUserInput(event) {
     console.log(dateObj)
     // getHolidays(dateObj)
     //     .then(renderHolidays)
-    return {date:dateObj, country:countryCode};
+    return { date: dateObj, country: countryCode };
 }
-function getHolidays(dateObj,country) {
+function getHolidays(dateObj, country) {
     paramsForHoliday.set("year", `${dateObj.year}`);
     paramsForHoliday.set("month", `${dateObj.month}`);
     paramsForHoliday.set("day", `${dateObj.day}`);
@@ -95,13 +98,18 @@ function getHolidays(dateObj,country) {
 async function renderNewHolidays(event) {
     event.preventDefault()
     const data = getUserInput(event)
-    console.log (data)
-    const holidayList = await getHolidays(data.date,data.country)
+    console.log(data)
+    const holidayList = await getHolidays(data.date, data.country)
     renderHolidays(holidayList, data.date, data.country)
+}
+function renderAllFavorites(){
+    favoriteList.forEach(favorite => renderFav(favorite))
 }
 
 $(document).ready(function () {
     getTodaysHolidays()
+   renderAllFavorites()
+
 });
 $('#holiday-form').on('submit', renderNewHolidays)
 
@@ -115,12 +123,70 @@ $('#holidays').on('click', '.holiday', async function (event) {
             $('#modal-link').attr('href', res.url)
         })
 })
+$('tbody').on('click', '.holiday', async function (event) {
+    document.getElementById('my_modal_1').showModal()
+    $('#modal-title').text(this.innerHTML)
+    const title = await getWikiArticalArray(this.innerHTML, this.dataset['date'])
+    getWikiExerpt(title)
+        .then(res => {
+            $('#modal-content').text(res.exerpt)
+            $('#modal-link').attr('href', res.url)
+        })
+})
+
+$('tbody').on('click', '.delete', function (event) {
+    // remove item from DOM and local storage
+    console.log('clicked delete')
+    this.parentElement.parentElement.remove()
+    console.log(favoriteList)
+    console.log(favoriteList[0].holiday)
+    console.log(this.dataset.holiday)
+   favoriteList = favoriteList.filter(holidayObj => holidayObj.holiday != this.dataset.holiday)
+
+    localStorage.setItem('Holiday',favoriteList)
+   
+
+})
 
 $('#holidays').on('click', '.favorite', function (event) {
-    // 
-        })
+    const OBJ = {
+        holiday: this.dataset.holiday,
+        date: this.dataset.date,
+        country: this.dataset.country
+    }
+    console.log(OBJ)
+    console.log(favoriteList.filter(fav => fav==OBJ))
+    let check = favoriteList.filter(fav => fav.holiday==OBJ.holiday)
+    console.log(check)
+    if(!check.length){
+        favoriteList.push(OBJ)
+        console.log(favoriteList)
+       
+        localStorage.setItem('Holiday',JSON.stringify(favoriteList))
+        renderFav(OBJ)
+    }
 
 
+    // if(!favoriteList.find(fav => fav==OBJ)){
+        
+    // }
+
+    return OBJ;
+
+})
+
+
+
+function renderFav(favoriteObj) {
+    $('tbody').append(`<tr class="hover">
+          <th></th>
+          <td>${favoriteObj.country}</td>
+          <td class="holiday">${favoriteObj.holiday}</td>
+          <td>${favoriteObj.date}</td>
+          <td><button class="delete btn btn-outline btn-accent scale-75" data-holiday = "${favoriteObj.holiday}" data-country="${favoriteObj.country}" data-date="${favoriteObj.date}">Delete</button></td>
+      </tr>`)
+
+}
 // Takes holiday - Returns title of first relevan wikipedia article
 function getWikiArticalArray(holiday, date) {
     const url = "https://en.wikipedia.org/w/api.php";
@@ -129,7 +195,8 @@ function getWikiArticalArray(holiday, date) {
         list: "search",
         srsearch: holiday,
         format: "json",
-        origin: "*"
+        origin: "*",
+        claims: "en"
     });
     return fetch(`${url}?${params}`)
         .then(response => response.json())
@@ -157,6 +224,6 @@ function getWikiExerpt(title) {
     console.log(`${params2}`)
     return fetch(`${url}?${params2}`)
         .then(response => response.json())
-        .then(response => { return {exerpt: response.query.pages[0].extract, url: wikiUrl} })
+        .then(response => { return { exerpt: response.query.pages[0].extract, url: wikiUrl } })
         .catch(err => console.error(err));
 }
