@@ -22,7 +22,7 @@ function getHolidays(dateObj) {
     paramsForHoliday.set("day", `${dateObj.day}`);
     return fetch(`${urlForHoliday}?${paramsForHoliday}`)
         .then(response => response.json())
-        // .then(response => console.log(response))
+        //.then(response => console.log(response))
         .catch(err => console.error(err));
 
 }
