@@ -22,7 +22,10 @@ and the Repo here: https://github.com/TIrwin19/Holiday_GeoFactor
 
 # Credits
 
-
+Tailwind CSS https://tailwindui.com/  
+Public Holidays API - Abstract API  https://docs.abstractapi.com/holidays  
+MediaWiki API https://www.mediawiki.org/wiki/MediaWiki  
+Daisy UI https://daisyui.com/  
 # License
 
 Refer to the LICENSE in the REPO
