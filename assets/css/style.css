@@ -39,13 +39,13 @@ main{
 }
 
 .hero-image{
-    background-image: url('/assets/images/world.jpg');
+    background-image: url('/Holiday_GeoFactor/assets/images/world.jpg');
     background-position: center;
     background-size: cover;
 }
 
 .about-hero{
-    background-image: url('/assets/images/city.jpg');
+    background-image: url('/Holiday_GeoFactor/assets/images/city.jpg');
     background-position: center;
     background-size: cover;
 }
