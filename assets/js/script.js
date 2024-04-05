@@ -33,8 +33,8 @@ function renderHolidays(holidays, date, country) {
     if (holidays.length) {
 
         holidays.forEach(holiday => $('#holidays').append(`
-        <div class="flex flex-col justify-center mx-3 my-5 text-white text-lg w-56 h-36 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
-            <p class="holiday text-center" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>
+        <div class="flex flex-col justify-center mx-3 my-5 text-white w-60 h-40 bg-gradient-to-br from-slate-500 via-gray-500 to-zinc-800 border border-stone-700 rounded-3xl hover:drop-shadow-2xl transition ease-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300">
+            <p class="hover:cursor-pointer holiday text-center px-1" data-date="${date.month}/${date.day}/${date.year}">${holiday.name}</p>
             <button class= "favorite mt-1 btn btn-outline btn-info scale-75" data-holiday="${holiday.name}" data-country="${country}" data-date="${date.month}/${date.day}/${date.year}">Add to Favorites</button>
         </div>`))
     } else {
@@ -180,7 +180,7 @@ function renderFav(favoriteObj) {
     $('tbody').append(`<tr class="hover">
     <th></th>
     <td>${favoriteObj.country}</td>
-    <td class="holiday">${favoriteObj.holiday}</td>
+    <td class="holiday hover:cursor-pointer">${favoriteObj.holiday}</td>
     <td>${favoriteObj.date}</td>
     <td><button class="delete btn btn-outline btn-accent scale-75" data-holiday = "${favoriteObj.holiday}" data-country="${favoriteObj.country}" data-date="${favoriteObj.date}">Delete</button></td>
     </tr>`)
