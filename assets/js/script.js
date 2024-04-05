@@ -27,7 +27,6 @@ var paramsForHoliday = new URLSearchParams({
 
 // Render holiday objects to the DOM
 function renderHolidays(holidays, date, country) {
-    console.log(date)
     $('#day-country').text(`${country} Holidays - ${date.month}/${date.day}/${date.year}`)
     $('#holidays').empty()
     if (holidays.length) {
